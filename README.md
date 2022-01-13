@@ -1,5 +1,5 @@
 
-# Washington Beer Recommender System Using Content-Based Filtering
+# Capstone: Washington Beer Recommender System
 Author: Steven Addison
 
 

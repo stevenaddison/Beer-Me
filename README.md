@@ -1,5 +1,5 @@
 
-# Capstone: Washington Beer Recommender System
+# Capstone: Beer Recommender System
 Author: Steven Addison
 
 

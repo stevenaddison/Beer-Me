@@ -1,12 +1,6 @@
 gensim==3.8.3
-matplotlib @ file:///C:/ci/matplotlib-suite_1613408055530/work
-nltk @ file:///tmp/build/80754af9/nltk_1618327084230/work
 numpy==1.22.1
-pandas @ file:///C:/ci/pandas_1618365634936/work
 protobuf==3.19.3
-scikit-learn @ file:///C:/ci/scikit-learn_1614446896245/work
-seaborn @ file:///tmp/build/80754af9/seaborn_1608578541026/work
-snowballstemmer @ file:///tmp/build/80754af9/snowballstemmer_1611258885636/work
 spacy==2.3.7
 streamlit==1.4.0
 texthero==1.1.0

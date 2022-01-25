@@ -1,4 +1,4 @@
-
+![header](https://github.com/stevenaddison/Capstone/blob/main/images/beerflight.jpg)
 # Capstone: Beer Recommender System
 Author: Steven Addison
 

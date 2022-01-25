@@ -145,6 +145,9 @@ st.sidebar.write(
 # loading the data
 cont_df = pd.read_csv('data/cont_df.csv', index_col='beer_id')
 
+#creating brewery and beer column
+
+cont_df['brewplusbeer'] = cont_df['brewery_name'] + " " + cont_df['beer_name']
 # null value sanity check
 cont_df = cont_df.dropna(subset=['clean_text'])
 
@@ -166,7 +169,7 @@ with st.beta_expander('Click here if your desired style is not showing to see wh
 
 beer_string = "Which " + style_input + " have you enjoyed recently?"
 
-beer_input = st.selectbox(beer_string, sorted(cont_df[cont_df['broad_style'] == style_input]['beer_name'].unique()))
+beer_input = st.selectbox(beer_string, sorted(cont_df[cont_df['broad_style'] == style_input]['brewplusbeer'].unique()))
 
 n_recs = st.number_input("How many recommendations would you like?", max_value=10)
  
@@ -185,7 +188,7 @@ def cos_sim(style_input,beer_input, n_recs):
     features = MinMaxScaler().fit_transform(features.values)
     style_df[col_names] = features
             
-    beerix = cont_df.loc[cont_df['beer_name'] == beer_input].index.values
+    beerix = cont_df.loc[cont_df['brewplusbeer'] == beer_input].index.values
     y = np.array(style_df.loc[beerix[0]])
     y = y.reshape(1, -1)
         

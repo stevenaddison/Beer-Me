@@ -143,7 +143,10 @@ st.sidebar.write(
 ####### Modeling #######
 
 # loading the data
-cont_df = pd.read_csv('data/cont_df.csv', index_col='beer_id')
+df1 = pd.read_pickle('data/df1.pickle',compression = 'bz2')
+df2 = pd.read_pickle('data/df2.pickle',compression = 'bz2')
+cont_df = df1.merge(df2, how= 'outer')
+cont_df.set_index('beer_id', inplace = True)
 
 #creating brewery and beer column
 

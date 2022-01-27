@@ -1,6 +1,5 @@
 ![header](https://github.com/stevenaddison/Capstone/blob/main/images/beerflight.jpg)
-# Beer Me!: 
-## A Content-Based Recommender System
+# Beer Me!: A Content-Based Recommender System
 Author: Steven Addison
 
 

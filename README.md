@@ -23,6 +23,7 @@ create a document-term matrix using `TfidfVectorizer`.
 Using the document-term matrix and one hot encoding, I built content-based recommender systems using `Cosine Similarity`, `Linear Kernel`, and `K-Nearest Neighbors`.
 
 Below, wordclouds are generated on my modeling beer and its top recommendation.
+
 ![superfuzzcancloud](https://user-images.githubusercontent.com/92377177/151300073-0d9fc734-e747-4997-bb22-982061713d23.png)
 ![citrusinesiscancloud](https://user-images.githubusercontent.com/92377177/151300080-38418471-2e01-4daf-a276-59b2fb89a8a9.png)
 

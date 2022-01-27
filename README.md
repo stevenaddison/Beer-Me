@@ -17,11 +17,20 @@ For this project I used three datasets sourced from [Kaggle](https://www.kaggle.
 Starting with over 9 million unique entires in the `reviews` database, I was able to generate recommendations for over sixty thousand unique beers from fifty four hundred different breweries across the United States.  Keeping only data relvant `text` data, where `country` is United States, and not currently `retired`, I group  the reviews by `beer_id`, keeping all `text` data, the mean `score`, `abv`, and `style`. Then using the text preprocessing package [Texthero](https://texthero.org/) I clean the reviews, and 
 create a document-term matrix using `TfidfVectorizer`.
 
+![stylecounts](https://user-images.githubusercontent.com/92377177/151299722-f2d3b890-6858-4273-a3e5-6cb2da9a825f.png)
+
 ## Modeling & Visualizations
 Using the document-term matrix and one hot encoding, I built content-based recommender systems using `Cosine Similarity`, `Linear Kernel`, and `K-Nearest Neighbors`.
 
+Below, wordclouds are generated on my modeling beer and its top recommendation.
+![superfuzzcancloud](https://user-images.githubusercontent.com/92377177/151300073-0d9fc734-e747-4997-bb22-982061713d23.png)
+![citrusinesiscancloud](https://user-images.githubusercontent.com/92377177/151300080-38418471-2e01-4daf-a276-59b2fb89a8a9.png)
+
+
 ## Deployment
 From the functions created in my notebook I built an app using `Streamlit`, deployed on [Heroku](https://beer-me-recommender.herokuapp.com/). 
+
+https://user-images.githubusercontent.com/92377177/151299653-089d0c87-02c8-4216-938b-68c508726d5c.mp4
 
 First you select what style beer you would like, these are broader categories than using every beer’s exact style. If you don’t see the style you are looking for an expandable dictionary is provided so you may see what broad category it may fall under.
 

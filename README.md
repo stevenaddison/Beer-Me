@@ -43,7 +43,7 @@ pip install -r requirements.txt
 Run the app.
 
 ```
-streamlit run beer-recommender-app.py
+streamlit run app.py
 ```
 
 ## Conclusions & Next Steps

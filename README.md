@@ -58,7 +58,7 @@ streamlit run app.py
 ```
 
 ## Conclusions & Next Steps
-As extensive as this may seem, there is always more data that can be gathered. Ideally I would like to get more current data for as many beers as possible to keep the model as up to date as possible. I would also be interested in gathering more features to use such as IBU, and the varieties of hops and malts used to brew each beer. In addition to that, I would like to create more specific data slicing options in the app such as being able to get recommendations based on state or even a brewery level. Lastly I would want to implement this model for other consumables such as whole bean coffee or wine, if you can reviewed it ,I can use it.
+As extensive as this may seem, there is always more data that can be gathered. Ideally I would like to get more current data for as many beers as possible to keep the model as up to date as possible. I would also be interested in gathering more features to use such as IBU, and the varieties of hops and malts used to brew each beer. In addition to that, I would like to create more specific data slicing options in the app such as being able to get recommendations based on state or even a brewery level. Lastly I would want to implement this model for other consumables such as whole bean coffee or wine: If you can review it, I can use it!
 
 
 ## Repository Structure

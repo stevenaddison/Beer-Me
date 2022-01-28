@@ -14,7 +14,7 @@ As someone who has spent many years in the restaurant industry I often dread hea
 For this project I used three datasets sourced from [Kaggle](https://www.kaggle.com/ehallmar/beers-breweries-and-beer-reviews) that contains information gathered from [Beer Advocate](https://www.beeradvocate.com/). For reproducibility one will have to download the data from the source, as it is too large to host on Github. 
 
 ## Data Preparation
-Starting with over 7 million unique entires in the `reviews` database, I was able to generate recommendations for over sixty thousand unique beers from fifty four hundred different breweries across the United States.  Keeping only data relvant `text` data, where `country` is United States, and not currently `retired`, I group  the reviews by `beer_id`, keeping all `text` data, the mean `score`, `abv`, and `style`. Then using the text preprocessing package [Texthero](https://texthero.org/) I clean the reviews, and 
+Starting with over 9 million unique entires in the `reviews` database, I was able to generate recommendations for over 82,000 unique beers from 5,400 different breweries across the United States.  Keeping only data relvant `text` data, where `country` is United States, and not currently `retired`, I group  the reviews by `beer_id`, keeping all `text` data, the mean `score`, `abv`, and `style`. Then using the text preprocessing package [Texthero](https://texthero.org/) I clean the reviews, and 
 create a document-term matrix using `TfidfVectorizer`.
 
 ![stylecounts](https://user-images.githubusercontent.com/92377177/151299722-f2d3b890-6858-4273-a3e5-6cb2da9a825f.png)
@@ -38,8 +38,6 @@ First you select what style beer you would like, these are broader categories th
 Next, type in the beer you would like  your recommendation based off of. Every beer is listed with their respective brewery as well so you may search for styles more easily. 
 
 Lastly, select how many recommendations you are looking for, and then hit the `beer me` button! Once these inputs are selected the app will slice the data based on the selected style and perform the tf-idf vectorization on the cleaned review text, scale the numerical features, and return your results, as simple as that. 
-
-Unfortunately the app takes too much memory to currently be ran with Heroku's limited conditions, however you can run it locally if cloned from my github repo.  
 
 ## Running The App Locally
 
@@ -66,7 +64,8 @@ As extensive as this may seem, there is always more data that can be gathered. I
 ├── [data]
 ├── [images]
 ├── .gitignore
-├── FinaleNotebook.ipynb
+├── FinalNotebook.ipynb
+├── FinalPresentation.pdf
 ├── Procfile
 ├── README.md
 ├── app.py

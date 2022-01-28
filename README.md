@@ -20,7 +20,7 @@ create a document-term matrix using `TfidfVectorizer`.
 ![stylecounts](https://user-images.githubusercontent.com/92377177/151299722-f2d3b890-6858-4273-a3e5-6cb2da9a825f.png)
 
 ## Modeling & Visualizations
-Using the document-term matrix and one hot encoding, I built content-based recommender systems using `Cosine Similarity`, `Linear Kernel`, and `K-Nearest Neighbors`.
+To prepare my data to be modeled I use one-hot encoding and min-max scaling on my numerical features, and join them back into my document-term matrix that I created. I then test out a Cosine Similarity method, first creating it step by step, then in a function that can be used with user inputs. Once I create that function I am able to easily tailor it to other content-based modeling methods like Linear Kernel Method and K-Nearest Neighbors.
 
 Below, wordclouds are generated on my modeling beer and its top recommendation.
 

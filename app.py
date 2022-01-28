@@ -200,7 +200,7 @@ def cos_sim(style_input,beer_input, n_recs):
             style_df = pd.read_csv('data/Porter.csv', index_col= 'beer_id')
             style_df.drop(columns= 'Unnamed: 0', inplace=True) 
     if style_input == 'Specialty Beer':
-            style_df = pd.read_csv('data/SpecialtyAle.csv', index_col= 'beer_id')
+            style_df = pd.read_csv('data/SpecialtyBeer.csv', index_col= 'beer_id')
             style_df.drop(columns= 'Unnamed: 0', inplace=True) 
     if style_input == 'Brown Ale':
             style_df = pd.read_csv('data/BrownAle.csv', index_col= 'beer_id')

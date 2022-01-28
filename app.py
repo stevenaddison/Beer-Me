@@ -224,7 +224,7 @@ def cos_sim(style_input,beer_input, n_recs):
     results = cos_sim.sort_values(by = 0, ascending=False)
     nresultsid = results.head(n_recs+1).index.values[1:]
     nresults_df = result_df.loc[nresultsid]
-    nresults_df = nresults_df.style.hide_index()
+    nresults_df.drop(columns= ['brewplusbeer','broad_style'], inplace=True)
 
     return nresults_df
 

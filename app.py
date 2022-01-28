@@ -135,7 +135,7 @@ styledict= {
 
 dictdf = pd.DataFrame.from_dict(styledict, orient='index')
 
-st.sidebar.write( '<h1 style="text-align:center">Beer Me</h1>' , unsafe_allow_html=True)
+st.sidebar.write( '<h1 style="text-align:center">Beer Me!</h1>' , unsafe_allow_html=True)
 st.sidebar.write( '<h2 style="text-align:center">a content-based recommender system</h2>' , unsafe_allow_html=True)
 st.sidebar.caption('by [Steven Addison](https://www.linkedin.com/in/addisonse/)')
 
@@ -144,9 +144,8 @@ st.sidebar.image(star_image)
 st.sidebar.write( '<h1 style="text-align:center">How It Works</h1>' , unsafe_allow_html=True)
   
 st.sidebar.write('''
-Recommendations are generated from dataset containing 82000 unique beers from 5400 different breweries across the United States using 
-Natural Language Processing to calculate similarity based on individual reviews by users on 
-[Beer Advocate](https://www.beeradvocate.com), ABV, Style, and Review Score.
+Recommendations are generated from a dataset containing 60,000 unique beers from 5,100 different breweries across the United States using 
+Natural Language Processing to calculate similarity based on [Beer Advocate](https://www.beeradvocate.com) Reviews, ABV, Style, and Review Score.
 ''')
 
 
@@ -159,60 +158,67 @@ st.sidebar.write(
 ''')
 
 ####### Modeling #######
+result_df = pd.read_csv('data/result_df.csv', index_col = 'beer_id')
 
-# loading the data
-df1 = pd.read_pickle('data/df1.pickle',compression = 'bz2')
-df2 = pd.read_pickle('data/df2.pickle',compression = 'bz2')
-cont_df = df1.merge(df2, how= 'outer')
-cont_df.set_index('beer_id', inplace = True)
-
-#creating brewery and beer column
-
-cont_df['brewplusbeer'] = cont_df['brewery_name'] + " " + cont_df['beer_name']
-# null value sanity check
-cont_df = cont_df.dropna(subset=['clean_text'])
-
-# defining the dataframe where we will source our results
-result_df = cont_df[['beer_name','style','brewery_name','city','state']]
-
-#making sure the output is pretty
-result_df = result_df.rename(columns={'beer_name':'Name','style':'Style',
-                                      'brewery_name':'Brewery','city':'City',
-                                      'state':'State'})
-
-# defining the dataframe we will use to model
-model_df = cont_df[['abv','score','clean_text','broad_style']]
-
-style_input = st.selectbox("What style beer are you looking for?", sorted((cont_df['broad_style'].unique())))
+style_input = st.selectbox("What style beer are you looking for?", sorted((result_df['broad_style'].unique())))
 
 with st.beta_expander('Click here if your desired style is not showing to see what category it falls into!', expanded=False):
     st.write(dictdf)
 
 beer_string = "Which " + style_input + " have you enjoyed recently?"
 
-beer_input = st.selectbox(beer_string, sorted(cont_df[cont_df['broad_style'] == style_input]['brewplusbeer'].unique()))
+beer_input = st.selectbox(beer_string, sorted(result_df[result_df['broad_style'] == style_input]['brewplusbeer'].unique()))
 
 n_recs = st.number_input("How many recommendations would you like?", max_value=10)
- 
-# cosine similarity model
-def cos_sim(style_input,beer_input, n_recs):
 
-    style_df = model_df[model_df['broad_style'] == style_input]
-        
-    tf = TfidfVectorizer(max_features=300, ngram_range=(1,3))
-    dtm = tf.fit_transform(style_df['clean_text'])
-    dtm = pd.DataFrame(dtm.todense(), columns=tf.get_feature_names(), index = style_df.index)
-    style_df = style_df.merge(dtm, left_index=True, right_index=True)
-    style_df = style_df.drop(columns=['broad_style','clean_text'])
-    col_names = ['abv_x', 'score']
-    features = style_df[col_names]
-    features = MinMaxScaler().fit_transform(features.values)
-    style_df[col_names] = features
-            
-    beerix = cont_df.loc[cont_df['brewplusbeer'] == beer_input].index.values
+def cos_sim(style_input,beer_input, n_recs):
+    if style_input == 'India Pale Ale':
+            style_df = pd.read_csv('data/IndiaPaleAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Pale Ale':
+            style_df = pd.read_csv('data/PaleAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Stout':
+            style_df = pd.read_csv('data/Stout.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Wild/Sour Beer':
+            style_df = pd.read_csv('data/WildSout.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Strong Ale':
+            style_df = pd.read_csv('data/StrongAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Dark Lager':
+            style_df = pd.read_csv('data/DarkLager.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Pale Lager':
+            style_df = pd.read_csv('data/PaleLager.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Wheat Beer':
+            style_df = pd.read_csv('data/WheatBeer.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Porter':
+            style_df = pd.read_csv('data/Porter.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Specialty Beer':
+            style_df = pd.read_csv('data/SpecialtyAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Brown Ale':
+            style_df = pd.read_csv('data/BrownAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Dark Ale':
+            style_df = pd.read_csv('data/DarkAle.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Bock':
+            style_df = pd.read_csv('data/Bock.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+    if style_input == 'Hybrid Beer':
+            style_df = pd.read_csv('data/HybridBeer.csv', index_col= 'beer_id')
+            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+
+    beerix = result_df.loc[result_df['brewplusbeer'] == beer_input].index.values
     y = np.array(style_df.loc[beerix[0]])
     y = y.reshape(1, -1)
-        
+
     cos_sim = cosine_similarity(style_df, y)
     cos_sim = pd.DataFrame(data=cos_sim, index=style_df.index)
     results = cos_sim.sort_values(by = 0, ascending=False)

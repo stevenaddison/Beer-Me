@@ -14,7 +14,7 @@ As someone who has spent many years in the restaurant industry I often dread hea
 For this project I used three datasets sourced from [Kaggle](https://www.kaggle.com/ehallmar/beers-breweries-and-beer-reviews) that contains information gathered from [Beer Advocate](https://www.beeradvocate.com/). For reproducibility one will have to download the data from the source, as it is too large to host on Github. 
 
 ## Data Preparation
-Starting with over 9 million unique entires in the `reviews` database, I was able to generate recommendations for over sixty thousand unique beers from fifty four hundred different breweries across the United States.  Keeping only data relvant `text` data, where `country` is United States, and not currently `retired`, I group  the reviews by `beer_id`, keeping all `text` data, the mean `score`, `abv`, and `style`. Then using the text preprocessing package [Texthero](https://texthero.org/) I clean the reviews, and 
+Starting with over 7 million unique entires in the `reviews` database, I was able to generate recommendations for over sixty thousand unique beers from fifty four hundred different breweries across the United States.  Keeping only data relvant `text` data, where `country` is United States, and not currently `retired`, I group  the reviews by `beer_id`, keeping all `text` data, the mean `score`, `abv`, and `style`. Then using the text preprocessing package [Texthero](https://texthero.org/) I clean the reviews, and 
 create a document-term matrix using `TfidfVectorizer`.
 
 ![stylecounts](https://user-images.githubusercontent.com/92377177/151299722-f2d3b890-6858-4273-a3e5-6cb2da9a825f.png)

@@ -144,7 +144,7 @@ st.sidebar.image(star_image)
 st.sidebar.write( '<h1 style="text-align:center">How It Works</h1>' , unsafe_allow_html=True)
   
 st.sidebar.write('''
-Recommendations are generated from a dataset containing 60,000 unique beers from 5,100 different breweries across the United States using 
+Recommendations are generated from a dataset containing 82,000 unique beers from 5,400 different breweries across the United States using 
 Natural Language Processing to calculate similarity based on [Beer Advocate](https://www.beeradvocate.com) Reviews, ABV, Style, and Review Score.
 ''')
 
@@ -163,7 +163,7 @@ result_df = pd.read_csv('data/result_df.csv', index_col = 'beer_id')
 style_input = st.selectbox("What style beer are you looking for?", sorted((result_df['broad_style'].unique())))
 
 with st.beta_expander('Click here if your desired style is not showing to see what category it falls into!', expanded=False):
-    st.write(dictdf)
+    st.dataframe(dictdf)
 
 beer_string = "Which " + style_input + " have you enjoyed recently?"
 
@@ -182,11 +182,11 @@ def cos_sim(style_input,beer_input, n_recs):
             style_df = pd.read_csv('data/Stout.csv', index_col= 'beer_id')
             style_df.drop(columns= 'Unnamed: 0', inplace=True) 
     if style_input == 'Wild/Sour Beer':
-            style_df = pd.read_csv('data/WildSout.csv', index_col= 'beer_id')
-            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+            style_df = pd.read_csv('data/WildSour.csv', index_col= 'beer_id')
+            #style_df.drop(columns= 'Unnamed: 0', inplace=True) 
     if style_input == 'Strong Ale':
             style_df = pd.read_csv('data/StrongAle.csv', index_col= 'beer_id')
-            style_df.drop(columns= 'Unnamed: 0', inplace=True) 
+            #style_df.drop(columns= 'Unnamed: 0', inplace=True) 
     if style_input == 'Dark Lager':
             style_df = pd.read_csv('data/DarkLager.csv', index_col= 'beer_id')
             style_df.drop(columns= 'Unnamed: 0', inplace=True) 

@@ -31,7 +31,7 @@ Below, wordclouds are generated on my modeling beer and its top recommendation.
 ## Deployment
 From the functions created in my notebook I built an app using `Streamlit`, deployed on [Heroku](https://beer-me-recommender.herokuapp.com/). 
 
-https://user-images.githubusercontent.com/92377177/151299653-089d0c87-02c8-4216-938b-68c508726d5c.mp4
+https://user-images.githubusercontent.com/92377177/151535550-b0d13571-3016-4ae6-a52a-b643f4dbd9c8.mp4
 
 First you select what style beer you would like, these are broader categories than using every beer’s exact style. If you don’t see the style you are looking for an expandable dictionary is provided so you may see what broad category it may fall under.
 
